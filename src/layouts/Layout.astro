@@ -1,0 +1,186 @@
+---
+import "@fontsource/dm-sans"
+import "@fontsource/dm-sans/500.css"
+import "@fontsource/dm-sans/700.css"
+import "@fontsource/dm-mono"
+import "@fontsource/dm-mono/500.css"
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+const isProd = import.meta.env.PROD;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Website coming soon... stay tuned!" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+
+		{isProd && (
+			<script is:inline
+				src="https://static.cloudflareinsights.com/beacon.min.js"
+				data-cf-beacon='{"token": "3407703f01d24505af7187da67e7ae96"}'
+			></script>
+		)}
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--color-primary: #124749;
+		--color-secondary: #f6b643;
+		--color-tertiary: #a94029;
+		--color-active: #e6e6e6;
+		--color-background: #124749;
+		--color-black: #000000;
+		--color-muted: #13585A;
+		--color-text: #000000;
+		
+		--space--6: -128px;
+		--space--5: -64px;
+		--space--4: -32px;
+		--space--3: -16px;
+		--space--2: -8px;
+		--space--1: -4px;
+		--space-0: 0;
+		--space-1: 4px;
+		--space-2: 8px;
+		--space-3: 16px;
+		--space-4: 32px;
+		--space-5: 64px;
+		--space-6: 128px;
+
+		--font-0: 12px;
+		--font-1: 14px;
+		--font-2: 16px;
+		--font-3: 18px;
+		--font-4: 24px;
+		--font-5: 32px;
+		--font-6: 48px;
+		--font-7: 64px;
+		--font-normal: 400;
+		--font-medium: 500;
+		--font-semibold: 600;
+		--font-bold: 700;
+		--font-extrabold: 800;
+		--font-text: "DM Sans", sans-serif;
+		--font-heading: "DM Sans", sans-serif; /* TODO: replace with Audiowide */
+		--font-mono: "DM Mono", "Menlo", monospace;
+		--lh-text: 1.65;
+		--lh-heading: 1.25;
+		--lh-tight: 1.1;
+		--lh-solid: 1;
+		--ls-normal: 0;
+		--ls-tight: -0.02em;
+		--ls-wide: 0.08em;
+
+		--size-container: 1280px;
+		--size-narrow: 1024px;
+		--size-wide: 1440px;
+		--size-tight: 848px;
+		--size-avatar: 48px;
+		--size-navGroupBoxMin: 300px;
+		--size-navGroupBoxMax: 400px;
+		--size-navIcon: 32px;
+		--size-navIconSmall: 30px;
+		--radii-button: 10px;
+		--radii-large: 24px;
+		--radii-circle: 99999px;
+
+		--shadow-large:
+			"0px 4px 8px 0px #2E29330A, 0px 4px 24px 0px #2E293314, 0px 8px 24px 0px #473F4F29";
+	}
+
+	body {
+		margin: 0;
+		font-family: "DM Sans", sans-serif;
+		color: #000000;
+		background-color: var(--color-primary);
+	}
+
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	a:link {
+		color: var(--color-secondary);
+	}
+
+	a:hover, a:focus, a:active {
+		color: var(--color-tertiary);
+	}
+
+	a:visited {
+		color: #bbb;
+	}
+
+	.tel:link {
+		color: var(--color-secondary);
+		text-decoration: none;
+	}
+
+	.tel:hover, .tel:focus, .tel:active {
+		text-decoration: underline;
+	}
+
+	@keyframes zoomInUp {
+		from {
+			transform: scale(0.95) translateY(10px) translateX(-50%);
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+			transform: scale(1), translateY(0) translateX(-50%);
+			visibility: visible;
+		}
+	}
+
+	@keyframes zoomOutDown {
+		from {
+			transform: scale(1) translateY(0) translateX(-50%);
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+			transform: scale(0.95) translateY(10px) translateX(-50%);
+			visibility: hidden;
+		}
+	}
+
+	@keyframes fadeIn {
+		from {
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+</style>
