@@ -1,0 +1,66 @@
+---
+import '@fontsource/dm-sans';
+import '@fontsource-variable/dm-sans';
+import dmSansWoff2 from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
+
+export interface Props {
+  description: string;
+  title: string;
+}
+const { description, title } = Astro.props as Props;
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Patrick A. Alcisto" />
+  <meta name="description" content={description} />
+
+  <meta property="og:title" content="Ride Skills">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rideskills.bike">
+  <meta property="og:image" content="https://rideskills.bike/apple-touch-icon-152x152.png">
+  <meta property="og:description" content={description}>
+
+  <link
+    rel="apple-touch-icon"
+    sizes="57x57"
+    href="/apple-touch-icon-57x57.png"
+  />
+  <link
+    rel="apple-touch-icon"
+    sizes="114x114"
+    href="/apple-touch-icon-114x114.png"
+  />
+  <link
+    rel="apple-touch-icon"
+    sizes="72x72"
+    href="/apple-touch-icon-72x72.png"
+  />
+  <link
+    rel="apple-touch-icon"
+    sizes="144x144"
+    href="/apple-touch-icon-144x144.png"
+  />
+  <link
+    rel="apple-touch-icon"
+    sizes="120x120"
+    href="/apple-touch-icon-120x120.png"
+  />
+  <link
+    rel="apple-touch-icon"
+    sizes="152x152"
+    href="/apple-touch-icon-152x152.png"
+  />
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="application-name" content="Ride Skills" />
+  <meta name="msapplication-TileColor" content="#124749" />
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+  <meta name="generator" content={Astro.generator} />
+
+  <link rel="preload" as="font" type="font/woff2" href={dmSansWoff2} crossorigin="anonymous" />
+</head>

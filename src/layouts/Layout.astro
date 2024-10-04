@@ -1,9 +1,5 @@
 ---
-import "@fontsource/dm-sans"
-import "@fontsource/dm-sans/500.css"
-import "@fontsource/dm-sans/700.css"
-import "@fontsource/dm-mono"
-import "@fontsource/dm-mono/500.css"
+import Head from "../components/Head.astro";
 
 interface Props {
 	title: string;
@@ -15,14 +11,8 @@ const isProd = import.meta.env.PROD;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Website coming soon... stay tuned!" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
+	<Head description="Website coming soon... stay tuned!" title={title} />
+	
 	<body>
 		<slot />
 
@@ -73,9 +63,10 @@ const isProd = import.meta.env.PROD;
 		--font-semibold: 600;
 		--font-bold: 700;
 		--font-extrabold: 800;
-		--font-text: "DM Sans", sans-serif;
-		--font-heading: "DM Sans", sans-serif; /* TODO: replace with Audiowide */
-		--font-mono: "DM Mono", "Menlo", monospace;
+		--font-text: "DM Sans Variable", sans-serif;
+		--font-text-fallback: "DM Sans", sans-serif;
+		--font-heading: "DM Sans Variable", sans-serif; /* TODO: replace with Audiowide */
+		--font-heading-fallback: "DM Sans", sans-serif; /* TODO: replace with Audiowide */
 		--lh-text: 1.65;
 		--lh-heading: 1.25;
 		--lh-tight: 1.1;
@@ -103,9 +94,18 @@ const isProd = import.meta.env.PROD;
 
 	body {
 		margin: 0;
-		font-family: "DM Sans", sans-serif;
+		font-family: var(--font-text-fallback);
+    font-weight: 400;
 		color: #000000;
 		background-color: var(--color-primary);
+	}
+
+	@supports (font-variation-settings: normal) {
+    body {
+			font-family: var(--font-text);
+			font-weight: 400;
+			font-variation-settings: "opsz" 14, "wght" 400;
+    }
 	}
 
 	*, *::before, *::after {
