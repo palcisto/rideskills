@@ -1,0 +1,91 @@
+---
+import RSLogo from '../components/svg/rs-logo';
+const year = (new Date()).getFullYear();
+---
+<footer class="footer">
+  <RSLogo className="logo" />
+  <div style="display: flex;">
+    <ul class="footer__nav">
+      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#">Book A Lesson</a></li>
+      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#">Testimonials</a></li>
+    </ul>
+    <p class="footer__contact">
+      <span>Ride Skills, LLC</span><br />
+      <span>Charlotte, NC</span><br />
+      <a href="tel:1-704-559-9202">(704) 559-9202</a><br />
+      <span>&copy; {year} All Rights Reserved, Ride Skills LLC.</span>
+    </p>
+  </div>
+  <p class="footer__socials">
+    Find us on Instagram!
+    <a href="https://www.instagram.com/rideskills.bike/">
+      <svg class="instagram"></svg>
+    </a>
+  </p>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-background);
+    /* display: grid; */
+    padding: var(--page-margin);
+    /* gap: 60px 48px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "logo logo"
+      "nav contact"
+      "socials socials"; */
+  }
+  
+  .logo {
+    filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
+    justify-self: center;
+    grid-area: logo;
+    width: 64vw;
+    height: auto;
+    /* margin-bottom: 60px; */
+  }
+
+  .footer__nav,
+  .footer__contact,
+  .footer__socials {
+    color: var(--color-white);
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__nav {
+    display: flex;
+    grid-area: nav;
+    flex-direction: column;
+    list-style: none;
+    /* gap: 8px; */
+    text-align: right;
+  }
+
+  .footer__nav__item {
+    line-height: 2;
+  }
+      
+  .footer__nav__item__link:link {
+    color: var(--color-white);
+  }
+
+  .footer__contact {
+    line-height: 2;
+    grid-area: contact;
+
+    & a:link {
+      color: var(--color-white);
+    }
+  }
+
+  .footer__socials {
+    color: var(--color-white);
+    font-size: 24px;
+    line-height: 1.33;
+    text-align: center;
+    grid-area: socials;
+    width: 100%;
+  }
+</style>

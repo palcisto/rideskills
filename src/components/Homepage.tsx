@@ -7,7 +7,7 @@ interface HomepageProps {}
 
 export default function Homepage(props: HomepageProps) {
   return (
-    <div>
+    <>
       <header>
         <RSLogo className="logo" />
         <ul>
@@ -64,29 +64,6 @@ export default function Homepage(props: HomepageProps) {
           </div>
         </section>
       </main>
-
-      <footer>
-        <RSLogo className="logo" />
-        <ul>
-          <li>Book A Lesson</li>
-          <li>Testimonials</li>
-        </ul>
-        <p>
-          <span>Ride Skills, LLC</span>
-          <span>Charlotte, NC</span>
-          <a href="tel:1-704-559-9202">(704) 559-9202</a>
-        </p>
-        <p>
-          Find us on Instagram!
-          <a href="https://www.instagram.com/rideskills.bike/">
-            <svg className="instagram"></svg>
-          </a>
-        </p>
-      </footer>
-
-      <button>
-        <span>To Top</span>
-      </button>
-    </div>
+    </>
   );
 }

@@ -1,5 +1,7 @@
 ---
+import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
+
 
 interface Props {
 	title: string;
@@ -14,7 +16,14 @@ const isProd = import.meta.env.PROD;
 	<Head description="Website coming soon... stay tuned!" title={title} />
 	
 	<body>
+
 		<slot />
+
+		<Footer />
+
+		<button>
+			<span>To Top</span>
+		</button>
 
 		{isProd && (
 			<script is:inline
@@ -35,6 +44,9 @@ const isProd = import.meta.env.PROD;
 		--color-black: #000000;
 		--color-muted: #13585A;
 		--color-text: #000000;
+		--color-white: #ffffff;
+
+		--page-margin: 24px;
 		
 		--space--6: -128px;
 		--space--5: -64px;
@@ -63,8 +75,7 @@ const isProd = import.meta.env.PROD;
 		--font-semibold: 600;
 		--font-bold: 700;
 		--font-extrabold: 800;
-		--font-text: "DM Sans Variable", sans-serif;
-		--font-text-fallback: "DM Sans", sans-serif;
+		--font-text: "Helvetica Neue", sans-serif;
 		--font-heading: "DM Sans Variable", sans-serif; /* TODO: replace with Audiowide */
 		--font-heading-fallback: "DM Sans", sans-serif; /* TODO: replace with Audiowide */
 		--lh-text: 1.65;
@@ -94,18 +105,10 @@ const isProd = import.meta.env.PROD;
 
 	body {
 		margin: 0;
-		font-family: var(--font-text-fallback);
+		font-family: var(--font-text);
     font-weight: 400;
 		color: #000000;
 		background-color: var(--color-primary);
-	}
-
-	@supports (font-variation-settings: normal) {
-    body {
-			font-family: var(--font-text);
-			font-weight: 400;
-			font-variation-settings: "opsz" 14, "wght" 400;
-    }
 	}
 
 	*, *::before, *::after {
