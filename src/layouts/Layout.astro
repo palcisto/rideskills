@@ -1,4 +1,5 @@
 ---
+import "../styles/styles.css";
 import Footer from "../components/Footer.astro";
 import Head from "../components/Head.astro";
 
@@ -111,30 +112,6 @@ const isProd = import.meta.env.PROD;
 		background-color: var(--color-primary);
 	}
 
-	*, *::before, *::after {
-		box-sizing: border-box;
-	}
-
-	a:link {
-		color: var(--color-secondary);
-	}
-
-	a:hover, a:focus, a:active {
-		color: var(--color-tertiary);
-	}
-
-	a:visited {
-		color: #bbb;
-	}
-
-	.tel:link {
-		color: var(--color-secondary);
-		text-decoration: none;
-	}
-
-	.tel:hover, .tel:focus, .tel:active {
-		text-decoration: underline;
-	}
 
 	@keyframes zoomInUp {
 		from {

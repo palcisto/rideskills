@@ -1,0 +1,19 @@
+.instagram__bottom,
+.instagram__middle,
+.instagram__top {
+  opacity: 0;
+}
+.instagram__initial {
+  fill: var(--color-secondary);
+}
+.instagram__bottom {
+  fill: var(--color-instagram-bottom);
+}
+
+.instagram__middle {
+  fill: url(#igrgmiddle);
+}
+
+.instagram__top {
+  fill: url(#igrgtop);
+}

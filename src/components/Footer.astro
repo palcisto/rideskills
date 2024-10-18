@@ -1,49 +1,46 @@
 ---
 import RSLogo from '../components/svg/rs-logo';
+import Instagram from '../components/icons/Instagram.astro';
 const year = (new Date()).getFullYear();
 ---
-<footer class="footer">
+<footer class="footer flex flex-col items-center gap-14 py-40">
   <RSLogo className="logo" />
-  <div style="display: flex;">
-    <ul class="footer__nav">
-      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#">Book A Lesson</a></li>
-      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#">Testimonials</a></li>
+  <div class="flex self-stretch">
+    <ul class="footer__nav w-1/2">
+      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#book">Book A Lesson</a></li>
+      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#testimonials">Testimonials</a></li>
     </ul>
-    <p class="footer__contact">
+    <p class="footer__contact w-1/2">
       <span>Ride Skills, LLC</span><br />
       <span>Charlotte, NC</span><br />
-      <a href="tel:1-704-559-9202">(704) 559-9202</a><br />
-      <span>&copy; {year} All Rights Reserved, Ride Skills LLC.</span>
+      <a class="[&:link]:underline" href="tel:1-704-559-9202">(704) 559-9202</a><br />
+      <span>contact@rideskills.bike</span>
     </p>
   </div>
   <p class="footer__socials">
     Find us on Instagram!
-    <a href="https://www.instagram.com/rideskills.bike/">
-      <svg class="instagram"></svg>
+    <a class="inline-block w-8 h-8" target="_blank" href="https://www.instagram.com/rideskills.bike">
+      <Instagram />
+      <span class="sr-only">Instagram</span>
     </a>
   </p>
+
+  <p class="text-white text-sm text-center">&copy; {year} All Rights Reserved, Ride Skills LLC.</p>
 </footer>
 
 <style>
   .footer {
     background-color: var(--color-background);
-    /* display: grid; */
-    padding: var(--page-margin);
-    /* gap: 60px 48px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-      "logo logo"
-      "nav contact"
-      "socials socials"; */
+    padding-left: var(--page-margin);
+    padding-right: var(--page-margin);
   }
   
   .logo {
     filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
-    justify-self: center;
+    
     grid-area: logo;
     width: 64vw;
     height: auto;
-    /* margin-bottom: 60px; */
   }
 
   .footer__nav,
@@ -59,8 +56,7 @@ const year = (new Date()).getFullYear();
     grid-area: nav;
     flex-direction: column;
     list-style: none;
-    /* gap: 8px; */
-    text-align: right;
+    width: 50%;
   }
 
   .footer__nav__item {
@@ -69,6 +65,7 @@ const year = (new Date()).getFullYear();
       
   .footer__nav__item__link:link {
     color: var(--color-white);
+    text-decoration: underline;
   }
 
   .footer__contact {
@@ -81,11 +78,15 @@ const year = (new Date()).getFullYear();
   }
 
   .footer__socials {
+    align-items: center;
     color: var(--color-white);
+    display: flex;
     font-size: 24px;
+    gap: 16px;
+    justify-content: center;
     line-height: 1.33;
     text-align: center;
-    grid-area: socials;
     width: 100%;
   }
+
 </style>
