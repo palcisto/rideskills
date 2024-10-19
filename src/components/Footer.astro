@@ -3,17 +3,17 @@ import RSLogo from '../components/svg/rs-logo';
 import Instagram from '../components/icons/Instagram.astro';
 const year = (new Date()).getFullYear();
 ---
-<footer class="footer flex flex-col items-center gap-14 py-40">
+<footer class="footer flex flex-col items-center gap-14 py-40 lg:py-32">
   <RSLogo className="logo" />
-  <div class="flex self-stretch">
+  <div class="flex self-center max-w-[630px] w-full justify-between">
     <ul class="footer__nav w-1/2">
-      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#book">Book A Lesson</a></li>
+      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#book">Book Lesson</a></li>
       <li class="footer__nav__item"><a class="footer__nav__item__link" href="#testimonials">Testimonials</a></li>
     </ul>
-    <p class="footer__contact w-1/2">
+    <p class="footer__contact">
       <span>Ride Skills, LLC</span><br />
       <span>Charlotte, NC</span><br />
-      <a class="[&:link]:underline" href="tel:1-704-559-9202">(704) 559-9202</a><br />
+      <a class="[&:link]:underline md:[&:link]:no-underline" href="tel:1-704-559-9202">(704) 559-9202</a><br />
       <span>contact@rideskills.bike</span>
     </p>
   </div>
@@ -37,9 +37,9 @@ const year = (new Date()).getFullYear();
   
   .logo {
     filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
-    
     grid-area: logo;
-    width: 64vw;
+    width: 100%;
+    max-width: 250px;
     height: auto;
   }
 
@@ -56,7 +56,6 @@ const year = (new Date()).getFullYear();
     grid-area: nav;
     flex-direction: column;
     list-style: none;
-    width: 50%;
   }
 
   .footer__nav__item {
@@ -88,5 +87,4 @@ const year = (new Date()).getFullYear();
     text-align: center;
     width: 100%;
   }
-
 </style>
