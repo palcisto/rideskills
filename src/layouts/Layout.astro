@@ -182,6 +182,7 @@ const isProd = import.meta.env.PROD;
 	@keyframes fadeOut {
 		from {
 			opacity: 1;
+			visibility: visible;
 		}
 
 		to {
@@ -191,7 +192,7 @@ const isProd = import.meta.env.PROD;
 	}
 
 	.back-to-top {
-		animation: fadeOut 0.5s ease-out;
+		animation: fadeOut 0.3s ease-out;
 		visibility: hidden;
 		opacity: 0;
 	}
@@ -211,7 +212,7 @@ const isProd = import.meta.env.PROD;
 	}
 
 	.back-to-top--is-visible {
-		animation: fadeIn 0.5s ease-out;
+		animation: fadeIn 0.3s ease-out;
 		visibility: visible;
 		opacity: 1;
 	}
