@@ -20,6 +20,9 @@ importers:
       '@fontsource-variable/dm-sans':
         specifier: ^5.1.0
         version: 5.1.0
+      '@fontsource/audiowide':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fontsource/dm-sans':
         specifier: ^5.1.0
         version: 5.1.0
@@ -385,6 +388,9 @@ packages:
 
   '@fontsource-variable/dm-sans@5.1.0':
     resolution: {integrity: sha512-wPhOMY/3ipy0t5ZIQk7FTKd3uZqE1XP2Yd2oKe3HfMWCYkotbcoMLkBQXcZzf/SgdCdczSP/hiO/PAZb84Kbxw==}
+
+  '@fontsource/audiowide@5.1.0':
+    resolution: {integrity: sha512-QhuSTyunflyRRG0uAD7e2EX/JsVs+WF1cUVc+cUbZh9F3UFnZaR4nZvzXLqWuCdTku+C2klRgLgrtLUk1wB3AA==}
 
   '@fontsource/dm-sans@5.1.0':
     resolution: {integrity: sha512-YpGtZ8Rbh+/84rn7o/rzBBFnikoLjhjtzKYAMZhSRr7xWU0piZDBFhUdI14M4Ub8emh0TSG/gU2pJOMUe9TGYA==}
@@ -2838,6 +2844,8 @@ snapshots:
     optional: true
 
   '@fontsource-variable/dm-sans@5.1.0': {}
+
+  '@fontsource/audiowide@5.1.0': {}
 
   '@fontsource/dm-sans@5.1.0': {}
 
