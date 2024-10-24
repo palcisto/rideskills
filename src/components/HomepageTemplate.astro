@@ -1,5 +1,6 @@
 ---
 import RSLogo from './svg/rs-logo';
+import RightArrow from './icons/RightArrow.astro';
 import { getImage } from 'astro:assets';
 import heroImageSM from '../images/hero-image-sm.jpg';
 import heroImageMD from '../images/hero-image-md.jpg';
@@ -45,18 +46,32 @@ const xlDesktopImage = await getImage({
 >
   <div class="header__inner grid md:flex md:items-center md:justify-between">
     <RSLogo className="logo w-[39vw] md:w-[200px] lg:w-[250px] h-auto" />
-    <ul class="hidden nav">
-      <li class="nav__item"><a href="">Lessons</a></li>
-      <li class="nav__item"><a href="">Testimonials</a></li>
-    </ul>
-    <button class="menu-toggle">
-      <span class="sr-only">Toggle Menu</span>
+
+    <nav
+      class="navn-container hidden top-0 left-0 w-full h-full z-20 bg-primary flex-col justify-center items-center"
+    >
+      <ul class="nav flex flex-col items-center gap-3">
+        <li class="nav__item"><a href="">Lessons</a></li>
+        <li class="nav__item"><a href="">Testimonials</a></li>
+      </ul>
+      <ul class="flex gap-3 mt-6">
+        <li><a href="https://www.instagram.com/rideskills.bike">IG</a></li>
+        <li><a href="https://www.facebook.com/rideskills.bike.clt">FB</a></li>
+      </ul>
+      <button class="js-close-menu">
+        <span class="sr-only">Close Menu</span>
+      </button>
+    </nav>
+    <button class="menu-toggle js-open-menu">
+      <span class="sr-only">Menu</span>
     </button>
   </div>
 </header>
 
-<section class="relative h-screen w-screen">
-  <picture style="inset: 0" class="inset-0 absolute hero-image">
+<section
+  class="relative h-screen w-screen pt-28 md:pt-52 md:px-8 lg:px-16 flex flex-col items-center md:items-start"
+>
+  <picture class="inset-0 absolute z-0 hero-image">
     <source
       media="(max-width: 393px)"
       type="image/webp"
@@ -87,7 +102,23 @@ const xlDesktopImage = await getImage({
     />
   </picture>
 
-  <h1 class="hidden">Ride With Confidence</h1>
+  <h1
+    class="hero__heading leading-[0.8] relative z-10 uppercase inline-flex flex-col gap-y-[2px] items-center md:items-start"
+  >
+    <span class="inline-flex gap-x-3">
+      <span
+        class="hero__heading__text bg-primary/80 inline-block text-white font-display"
+        >Ride With</span
+      >
+      <RightArrow
+        class="rs-right-arrow w-[0.7em] lg:w-[0.62em] h-auto inline-block"
+      />
+    </span>
+    <span
+      class="hero__heading__text bg-primary/80 inline-block text-white font-display tracking-[.075em]"
+      >Confidence</span
+    >
+  </h1>
   <p class="hidden">
     At Ride Skills, we believe a confident rider is a better rider and a better
     rider is a happier rider.
@@ -230,5 +261,19 @@ const xlDesktopImage = await getImage({
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+
+  .hero__heading {
+    font-size: clamp(2rem, 1.174rem + 4.13vw, 4.375rem);
+
+    &__text {
+      padding-left: clamp(0.625rem, 0.451rem + 0.87vw, 1.125rem);
+      padding-right: clamp(0.625rem, 0.451rem + 0.87vw, 1.125rem);
+      padding-bottom: clamp(0.5rem, 0.326rem + 0.87vw, 1rem);
+      padding-top: clamp(0.5rem, 0.326rem + 0.87vw, 1rem);
+    }
+  }
+
+  .rs-right-arrow {
   }
 </style>
