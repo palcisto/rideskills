@@ -10,10 +10,16 @@ import Header from '../components/Header.astro';
 interface Props {
   title: string;
   header: 'global' | 'homepage';
+  mainElementClasses?: string | string[];
 }
 
-const { title, header = 'global' } = Astro.props;
+const { title, header = 'global', mainElementClasses } = Astro.props;
 const isProd = import.meta.env.PROD;
+const mainClasses = [
+  ...(Array.isArray(mainElementClasses)
+    ? mainElementClasses
+    : [mainElementClasses]),
+];
 ---
 
 <!doctype html>
@@ -21,9 +27,11 @@ const isProd = import.meta.env.PROD;
   <Head description="Website coming soon... stay tuned!" title={title} />
 
   <body>
-    {header === 'global' && <Header variant={header} />}
+    <Header variant={header} />
 
-    <slot />
+    <main class:list={mainClasses}>
+      <slot />
+    </main>
 
     <Footer />
 

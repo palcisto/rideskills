@@ -41,113 +41,111 @@ const xlDesktopImage = await getImage({
 });
 ---
 
-<main>
-  <section
-    class="relative h-screen max-w-screen pt-28 pb-10 px-6 md:pt-52 lg:pb-32 xl:pb-20 md:px-8 2xl:pt-64 lg:px-16 flex flex-col items-center justify-between md:items-start md:justify-normal md:gap-12 lg:gap-8 xl:gap-10 md:max-w-min"
+<section
+  class="relative h-screen max-w-screen pt-28 pb-10 px-6 md:pt-52 lg:pb-32 xl:pb-20 md:px-8 2xl:pt-64 lg:px-16 flex flex-col items-center justify-between md:items-start md:justify-normal md:gap-12 lg:gap-8 xl:gap-10 md:max-w-min"
+>
+  <picture class="inset-0 absolute z-0 hero-image w-screen">
+    <source
+      media="(max-width: 393px)"
+      type="image/webp"
+      srcset={mobileImage.srcSet.attribute}
+    />
+    <source
+      media="(max-width: 834px)"
+      type="image/webp"
+      srcset={tabletImage.srcSet.attribute}
+    />
+    <source
+      media="(max-width: 1200px)"
+      type="image/webp"
+      srcset={desktopImage.srcSet.attribute}
+    />
+    <source
+      media="(min-width: 1201px)"
+      type="image/webp"
+      srcset={xlDesktopImage.srcSet.attribute}
+      }
+    />
+    <img
+      src={desktopImage.src}
+      width="1200"
+      height="775"
+      fetchpriority="high"
+      alt="hero image"
+    />
+  </picture>
+
+  <h1
+    class="hero__heading leading-[0.8] relative z-10 uppercase inline-flex flex-col gap-y-[2px] items-center md:items-start 2xl:ml-8 text-white"
   >
-    <picture class="inset-0 absolute z-0 hero-image w-screen">
-      <source
-        media="(max-width: 393px)"
-        type="image/webp"
-        srcset={mobileImage.srcSet.attribute}
-      />
-      <source
-        media="(max-width: 834px)"
-        type="image/webp"
-        srcset={tabletImage.srcSet.attribute}
-      />
-      <source
-        media="(max-width: 1200px)"
-        type="image/webp"
-        srcset={desktopImage.srcSet.attribute}
-      />
-      <source
-        media="(min-width: 1201px)"
-        type="image/webp"
-        srcset={xlDesktopImage.srcSet.attribute}
-        }
-      />
-      <img
-        src={desktopImage.src}
-        width="1200"
-        height="775"
-        fetchpriority="high"
-        alt="hero image"
-      />
-    </picture>
-
-    <h1
-      class="hero__heading leading-[0.8] relative z-10 uppercase inline-flex flex-col gap-y-[2px] items-center md:items-start 2xl:ml-8 text-white"
-    >
-      <span class="inline-flex gap-x-3">
-        <span
-          class="hero__heading__text bg-primary/80 inline-block text-white font-display"
-          >Ride With</span
-        >
-        <RightArrow
-          class="rs-right-arrow w-[0.7em] lg:w-[0.62em] h-auto inline-block"
-        />
-      </span>
+    <span class="inline-flex gap-x-3">
       <span
-        class="hero__heading__text bg-primary/80 inline-block text-white font-display tracking-[.075em]"
-        >Confidence</span
+        class="hero__heading__text bg-primary/80 inline-block text-white font-display"
+        >Ride With</span
       >
-    </h1>
-    <div class="flex flex-col gap-y-7 md:justify-between md:flex-auto">
-      <p
-        class="hero__description drop-shadow-md bg-black/50 p-3 md:p-4 md:w-[calc(100%+2rem)] lg:w-[calc(100%+4rem)] md:-ml-8 lg:-ml-16 md:pl-8 lg:pl-16 2xl:pl-24"
-      >
-        At Ride Skills, we believe a confident rider is a better rider and a
-        better rider is a happier rider.
-      </p>
-      <Button
-        class="relative z-10 md:max-w-80"
-        type="link"
-        href="mailto:contact@rideskills.bike?subject=I%20would%20like%20to%20book%20a%20lesson"
-        variant="primary"
-      >
-        Book A Lesson
-      </Button>
-    </div>
-  </section>
+      <RightArrow
+        class="rs-right-arrow w-[0.7em] lg:w-[0.62em] h-auto inline-block"
+      />
+    </span>
+    <span
+      class="hero__heading__text bg-primary/80 inline-block text-white font-display tracking-[.075em]"
+      >Confidence</span
+    >
+  </h1>
+  <div class="flex flex-col gap-y-7 md:justify-between md:flex-auto">
+    <p
+      class="hero__description drop-shadow-md bg-black/50 p-3 md:p-4 md:w-[calc(100%+2rem)] lg:w-[calc(100%+4rem)] md:-ml-8 lg:-ml-16 md:pl-8 lg:pl-16 2xl:pl-24"
+    >
+      At Ride Skills, we believe a confident rider is a better rider and a
+      better rider is a happier rider.
+    </p>
+    <Button
+      class="relative z-10 md:max-w-80"
+      type="link"
+      href="mailto:contact@rideskills.bike?subject=I%20would%20like%20to%20book%20a%20lesson"
+      variant="primary"
+    >
+      Book A Lesson
+    </Button>
+  </div>
+</section>
 
-  <section class="border-t-secondary border-t-4">
-    <div class="hidden">
-      <div>
-        <svg></svg>
-        <h2>Private Mountain Bike Lesson</h2>
-        <ul>
-          <li>Personalized coaching</li>
-          <li>1-4 people of all ability levels</li>
-          <li>2 hour minimum</li>
-        </ul>
-        <p>
-          1 on 1 bike mountain bike coaching is the quickest way to increase
-          your mtb skill set. We can work on what you want to learn if you have
-          something specific in mind or I can come up with a lesson plan through
-          the use of a questionnaire and skills assessment.
-        </p>
-        <a href="#booknow">Book Now</a>
-      </div>
-      <div>
-        <svg></svg>
-        <h2>Mountain Bike Group Clinics</h2>
-        <ul>
-          <li>Personalized coaching</li>
-          <li>5-7 people of all ability levels</li>
-          <li>3 hour minimum</li>
-        </ul>
-        <p>
-          1 on 1 bike mountain bike coaching is the quickest way to increase
-          your mtb skill set. We can work on what you want to learn if you have
-          something specific in mind or I can come up with a lesson plan through
-          the use of a questionnaire and skills assessment.
-        </p>
-        <a href="#booknow">Book Now</a>
-      </div>
+<section class="border-t-secondary border-t-4">
+  <div class="hidden">
+    <div>
+      <svg></svg>
+      <h2>Private Mountain Bike Lesson</h2>
+      <ul>
+        <li>Personalized coaching</li>
+        <li>1-4 people of all ability levels</li>
+        <li>2 hour minimum</li>
+      </ul>
+      <p>
+        1 on 1 bike mountain bike coaching is the quickest way to increase your
+        mtb skill set. We can work on what you want to learn if you have
+        something specific in mind or I can come up with a lesson plan through
+        the use of a questionnaire and skills assessment.
+      </p>
+      <a href="#booknow">Book Now</a>
     </div>
-  </section>
-</main>
+    <div>
+      <svg></svg>
+      <h2>Mountain Bike Group Clinics</h2>
+      <ul>
+        <li>Personalized coaching</li>
+        <li>5-7 people of all ability levels</li>
+        <li>3 hour minimum</li>
+      </ul>
+      <p>
+        1 on 1 bike mountain bike coaching is the quickest way to increase your
+        mtb skill set. We can work on what you want to learn if you have
+        something specific in mind or I can come up with a lesson plan through
+        the use of a questionnaire and skills assessment.
+      </p>
+      <a href="#booknow">Book Now</a>
+    </div>
+  </div>
+</section>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
