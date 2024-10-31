@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import RSLogo from '../components/svg/rs-logo';
 import Instagram from '../components/icons/Instagram.astro';
+import pmbiaLogo from '../images/PMBIA-Primary-Logo-color-200wide.png';
 const year = new Date().getFullYear();
 
 const isProdReady = false;
@@ -42,6 +44,18 @@ const isProdReady = false;
       ><br />
       <span>contact@rideskills.bike</span>
     </p>
+  </div>
+  <div class="flex flex-col items-center gap-4">
+    <a href="https://pmbia.org">
+      <Image
+        class="pmbia-logo"
+        src={pmbiaLogo}
+        alt="PMBIA Logo"
+        width={120}
+        height={120}
+      />
+    </a>
+    <p class="text-secondary">PMBIA Certified Instructors</p>
   </div>
   <p class="footer__socials">
     Find us on Instagram!
