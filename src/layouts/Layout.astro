@@ -1,14 +1,18 @@
 ---
 import '../styles/styles.css';
+import { isProdReady } from '../constants';
+import RSLogo from '../components/svg/rs-logo';
 import Footer from '../components/Footer.astro';
 import Head from '../components/Head.astro';
 import ArrowUp from '../components/icons/UpArrow.astro';
+import Header from '../components/Header.astro';
 
 interface Props {
   title: string;
+  header: 'global' | 'homepage';
 }
 
-const { title } = Astro.props;
+const { title, header = 'global' } = Astro.props;
 const isProd = import.meta.env.PROD;
 ---
 
@@ -17,14 +21,16 @@ const isProd = import.meta.env.PROD;
   <Head description="Website coming soon... stay tuned!" title={title} />
 
   <body>
+    {header === 'global' && <Header variant={header} />}
+
     <slot />
 
     <Footer />
 
     <button
-      class="js-to-top back-to-top bg-tertiary text-white p-4 fixed right-6 bottom-6 w-16 h-16 rounded"
+      class="js-to-top back-to-top bg-tertiary text-white p-4 fixed right-6 bottom-6 w-12 h-12 md:w-16 md:h-16 rounded"
     >
-      <ArrowUp class="w-" />
+      <ArrowUp class="" />
       <span class="sr-only">To Top</span>
     </button>
 
@@ -185,11 +191,9 @@ const isProd = import.meta.env.PROD;
     animation: fadeOut 0.3s ease-out;
     visibility: hidden;
     opacity: 0;
-  }
-
-  .back-to-top {
     transition: background-color 0.2s ease-out;
   }
+
   .back-to-top svg {
     transition: transform 0.2s ease-out;
   }
