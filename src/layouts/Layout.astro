@@ -1,186 +1,223 @@
 ---
-import Head from "../components/Head.astro";
+import '../styles/styles.css';
+import Footer from '../components/Footer.astro';
+import Head from '../components/Head.astro';
+import ArrowUp from '../components/icons/UpArrow.astro';
+import Header from '../components/Header.astro';
 
 interface Props {
-	title: string;
+  title: string;
+  header: 'global' | 'homepage';
+  mainElementClasses?: string | string[];
 }
 
-const { title } = Astro.props;
+const { title, header = 'global', mainElementClasses } = Astro.props;
 const isProd = import.meta.env.PROD;
+const mainClasses = [
+  ...(Array.isArray(mainElementClasses)
+    ? mainElementClasses
+    : [mainElementClasses]),
+];
 ---
 
 <!doctype html>
 <html lang="en">
-	<Head description="Website coming soon... stay tuned!" title={title} />
-	
-	<body>
-		<slot />
+  <Head description="Website coming soon... stay tuned!" title={title} />
 
-		{isProd && (
-			<script is:inline
-				src="https://static.cloudflareinsights.com/beacon.min.js"
-				data-cf-beacon='{"token": "3407703f01d24505af7187da67e7ae96"}'
-			></script>
-		)}
-	</body>
+  <body>
+    <Header variant={header} />
+
+    <main class:list={mainClasses}>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <button
+      class="js-to-top back-to-top bg-tertiary text-white p-4 fixed right-6 bottom-6 w-12 h-12 md:w-16 md:h-16 rounded"
+    >
+      <ArrowUp class="" />
+      <span class="sr-only">To Top</span>
+    </button>
+
+    <script>
+      import '../scripts/to-top';
+      import '../scripts/menu-toggle';
+    </script>
+
+    {
+      isProd && (
+        <script
+          is:inline
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "3407703f01d24505af7187da67e7ae96"}'
+        />
+      )
+    }
+  </body>
 </html>
 
-<style is:global>
-	:root {
-		--color-primary: #124749;
-		--color-secondary: #f6b643;
-		--color-tertiary: #a94029;
-		--color-active: #e6e6e6;
-		--color-background: #124749;
-		--color-black: #000000;
-		--color-muted: #13585A;
-		--color-text: #000000;
-		
-		--space--6: -128px;
-		--space--5: -64px;
-		--space--4: -32px;
-		--space--3: -16px;
-		--space--2: -8px;
-		--space--1: -4px;
-		--space-0: 0;
-		--space-1: 4px;
-		--space-2: 8px;
-		--space-3: 16px;
-		--space-4: 32px;
-		--space-5: 64px;
-		--space-6: 128px;
+<style is:global lang="scss">
+  :root {
+    --color-primary: #124749;
+    --color-primary-rgb: 18 71 73;
+    --color-secondary: #f6b643;
+    --color-secondary-rgb: 246 182 67;
+    --color-tertiary: #a94029;
+    --color-tertiary-rgb: 169 64 41;
+    --color-active: #e6e6e6;
+    --color-background: #124749;
+    --color-black: #000000;
+    --color-muted: #13585a;
+    --color-text: #000000;
+    --color-white: #ffffff;
 
-		--font-0: 12px;
-		--font-1: 14px;
-		--font-2: 16px;
-		--font-3: 18px;
-		--font-4: 24px;
-		--font-5: 32px;
-		--font-6: 48px;
-		--font-7: 64px;
-		--font-normal: 400;
-		--font-medium: 500;
-		--font-semibold: 600;
-		--font-bold: 700;
-		--font-extrabold: 800;
-		--font-text: "DM Sans Variable", sans-serif;
-		--font-text-fallback: "DM Sans", sans-serif;
-		--font-heading: "DM Sans Variable", sans-serif; /* TODO: replace with Audiowide */
-		--font-heading-fallback: "DM Sans", sans-serif; /* TODO: replace with Audiowide */
-		--lh-text: 1.65;
-		--lh-heading: 1.25;
-		--lh-tight: 1.1;
-		--lh-solid: 1;
-		--ls-normal: 0;
-		--ls-tight: -0.02em;
-		--ls-wide: 0.08em;
+    --page-margin: 24px;
 
-		--size-container: 1280px;
-		--size-narrow: 1024px;
-		--size-wide: 1440px;
-		--size-tight: 848px;
-		--size-avatar: 48px;
-		--size-navGroupBoxMin: 300px;
-		--size-navGroupBoxMax: 400px;
-		--size-navIcon: 32px;
-		--size-navIconSmall: 30px;
-		--radii-button: 10px;
-		--radii-large: 24px;
-		--radii-circle: 99999px;
+    --space--6: -128px;
+    --space--5: -64px;
+    --space--4: -32px;
+    --space--3: -16px;
+    --space--2: -8px;
+    --space--1: -4px;
+    --space-0: 0;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 32px;
+    --space-5: 64px;
+    --space-6: 128px;
 
-		--shadow-large:
-			"0px 4px 8px 0px #2E29330A, 0px 4px 24px 0px #2E293314, 0px 8px 24px 0px #473F4F29";
-	}
+    --font-0: 12px;
+    --font-1: 14px;
+    --font-2: 16px;
+    --font-3: 18px;
+    --font-4: 24px;
+    --font-5: 32px;
+    --font-6: 48px;
+    --font-7: 64px;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-text: 'Helvetica Neue', sans-serif;
+    --font-display: 'Audiowide', system-ui;
+    --font-sans-alternate: 'DM Sans', sans-serif;
+    --lh-text: 1.65;
+    --lh-heading: 1.25;
+    --lh-tight: 1.1;
+    --lh-solid: 1;
+    --ls-normal: 0;
+    --ls-tight: -0.02em;
+    --ls-wide: 0.08em;
 
-	body {
-		margin: 0;
-		font-family: var(--font-text-fallback);
+    --size-container: 1280px;
+    --size-narrow: 1024px;
+    --size-wide: 1440px;
+    --size-tight: 848px;
+    --size-avatar: 48px;
+    --size-navGroupBoxMin: 300px;
+    --size-navGroupBoxMax: 400px;
+    --size-navIcon: 32px;
+    --size-navIconSmall: 30px;
+    --radii-button: 10px;
+    --radii-large: 24px;
+    --radii-circle: 99999px;
+
+    --shadow-large: '0px 4px 8px 0px #2E29330A, 0px 4px 24px 0px #2E293314, 0px 8px 24px 0px #473F4F29';
+  }
+
+  html,
+  body {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-text);
     font-weight: 400;
-		color: #000000;
-		background-color: var(--color-primary);
-	}
+    color: #000000;
+    background-color: var(--color-primary);
+  }
 
-	@supports (font-variation-settings: normal) {
-    body {
-			font-family: var(--font-text);
-			font-weight: 400;
-			font-variation-settings: "opsz" 14, "wght" 400;
+  @keyframes zoomInUp {
+    from {
+      transform: scale(0.95) translateY(10px) translateX(-50%);
+      visibility: hidden;
+      opacity: 0;
     }
-	}
 
-	*, *::before, *::after {
-		box-sizing: border-box;
-	}
+    to {
+      opacity: 1;
+      transform:
+        scale(1),
+        translateY(0) translateX(-50%);
+      visibility: visible;
+    }
+  }
 
-	a:link {
-		color: var(--color-secondary);
-	}
+  @keyframes zoomOutDown {
+    from {
+      transform: scale(1) translateY(0) translateX(-50%);
+      opacity: 1;
+    }
 
-	a:hover, a:focus, a:active {
-		color: var(--color-tertiary);
-	}
+    to {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px) translateX(-50%);
+      visibility: hidden;
+    }
+  }
 
-	a:visited {
-		color: #bbb;
-	}
+  @keyframes fadeIn {
+    from {
+      visibility: hidden;
+      opacity: 0;
+    }
 
-	.tel:link {
-		color: var(--color-secondary);
-		text-decoration: none;
-	}
+    to {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
-	.tel:hover, .tel:focus, .tel:active {
-		text-decoration: underline;
-	}
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      visibility: visible;
+    }
 
-	@keyframes zoomInUp {
-		from {
-			transform: scale(0.95) translateY(10px) translateX(-50%);
-			visibility: hidden;
-			opacity: 0;
-		}
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
 
-		to {
-			opacity: 1;
-			transform: scale(1), translateY(0) translateX(-50%);
-			visibility: visible;
-		}
-	}
+  .back-to-top {
+    animation: fadeOut 0.3s ease-out;
+    visibility: hidden;
+    opacity: 0;
+    transition: background-color 0.2s ease-out;
+  }
 
-	@keyframes zoomOutDown {
-		from {
-			transform: scale(1) translateY(0) translateX(-50%);
-			opacity: 1;
-		}
+  .back-to-top svg {
+    transition: transform 0.2s ease-out;
+  }
 
-		to {
-			opacity: 0;
-			transform: scale(0.95) translateY(10px) translateX(-50%);
-			visibility: hidden;
-		}
-	}
+  .back-to-top:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-tertiary) 100%,
+      var(--color-black) 10%
+    );
+  }
+  .back-to-top:hover svg {
+    transform: translateY(-4px);
+  }
 
-	@keyframes fadeIn {
-		from {
-			visibility: hidden;
-			opacity: 0;
-		}
-
-		to {
-			opacity: 1;
-			visibility: visible;
-		}
-	}
-
-	@keyframes fadeOut {
-		from {
-			opacity: 1;
-		}
-
-		to {
-			opacity: 0;
-			visibility: hidden;
-		}
-	}
-
+  .back-to-top--is-visible {
+    animation: fadeIn 0.3s ease-out;
+    visibility: visible;
+    opacity: 1;
+  }
 </style>

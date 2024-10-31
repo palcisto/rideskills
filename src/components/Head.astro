@@ -1,7 +1,9 @@
 ---
+import '@fontsource/audiowide';
 import '@fontsource/dm-sans';
 import '@fontsource-variable/dm-sans';
-import dmSansWoff2 from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
+// import dmSansWoff2 from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
+import audiowideWoff2 from '@fontsource/audiowide/files/audiowide-latin-400-normal.woff2?url';
 
 export interface Props {
   description: string;
@@ -17,11 +19,14 @@ const { description, title } = Astro.props as Props;
   <meta name="author" content="Patrick A. Alcisto" />
   <meta name="description" content={description} />
 
-  <meta property="og:title" content="Ride Skills">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rideskills.bike">
-  <meta property="og:image" content="https://rideskills.bike/apple-touch-icon-152x152.png">
-  <meta property="og:description" content={description}>
+  <meta property="og:title" content="Ride Skills" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rideskills.bike" />
+  <meta
+    property="og:image"
+    content="https://rideskills.bike/apple-touch-icon-152x152.png"
+  />
+  <meta property="og:description" content={description} />
 
   <link
     rel="apple-touch-icon"
@@ -54,13 +59,19 @@ const { description, title } = Astro.props as Props;
     href="/apple-touch-icon-152x152.png"
   />
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="manifest" href="site.webmanifest" />
   <meta name="application-name" content="Ride Skills" />
   <meta name="msapplication-TileColor" content="#124749" />
   <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
 
   <meta name="generator" content={Astro.generator} />
 
-  <link rel="preload" as="font" type="font/woff2" href={dmSansWoff2} crossorigin="anonymous" />
+  <link
+    rel="preload"
+    as="font"
+    type="font/woff2"
+    href={audiowideWoff2}
+    crossorigin="anonymous"
+  />
 </head>

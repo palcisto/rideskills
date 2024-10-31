@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import RSLogo from '../components/svg/rs-logo';
+import Instagram from '../components/icons/Instagram.astro';
+import pmbiaLogo from '../images/PMBIA-Primary-Logo-color-200wide.png';
+const year = new Date().getFullYear();
+
+const isProdReady = false;
+---
+
+<footer class="footer flex flex-col items-center gap-14 py-40 lg:py-32">
+  <RSLogo className="logo" />
+  <div
+    class:list={[
+      'flex',
+      'self-center',
+      'max-w-[630px]',
+      'w-full',
+      isProdReady ? 'justify-between' : 'justify-center',
+    ]}
+  >
+    {
+      isProdReady && (
+        <ul class="footer__nav w-1/2">
+          <li class="footer__nav__item">
+            <a class="footer__nav__item__link" href="#book">
+              Book Lesson
+            </a>
+          </li>
+          <li class="footer__nav__item">
+            <a class="footer__nav__item__link" href="#testimonials">
+              Testimonials
+            </a>
+          </li>
+        </ul>
+      )
+    }
+    <p class:list={['footer__contact', !isProdReady && 'text-center']}>
+      <span>Ride Skills, LLC</span><br />
+      <span>Charlotte, NC</span><br />
+      <a
+        class="[&:link]:underline md:[&:link]:no-underline"
+        href="tel:1-704-559-9202">(704) 559-9202</a
+      ><br />
+      <span>contact@rideskills.bike</span>
+    </p>
+  </div>
+  <div class="flex flex-col items-center gap-4">
+    <a href="https://pmbia.org">
+      <Image
+        class="pmbia-logo"
+        src={pmbiaLogo}
+        alt="PMBIA Logo"
+        width={120}
+        height={120}
+      />
+    </a>
+    <p class="text-secondary">PMBIA Certified Instructors</p>
+  </div>
+  <p class="footer__socials">
+    Find us on Instagram!
+    <a
+      class="inline-block w-8 h-8"
+      target="_blank"
+      href="https://www.instagram.com/rideskills.bike"
+    >
+      <Instagram />
+      <span class="sr-only">Instagram</span>
+    </a>
+  </p>
+
+  <p class="text-white text-sm text-center">
+    &copy; {year} All Rights Reserved, Ride Skills LLC.
+  </p>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-background);
+    padding-left: var(--page-margin);
+    padding-right: var(--page-margin);
+  }
+
+  .logo {
+    filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
+    grid-area: logo;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+
+  .footer__nav,
+  .footer__contact,
+  .footer__socials {
+    color: var(--color-white);
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__nav {
+    display: flex;
+    grid-area: nav;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  .footer__nav__item {
+    line-height: 2;
+  }
+
+  .footer__nav__item__link:link {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+
+  .footer__contact {
+    line-height: 2;
+    grid-area: contact;
+
+    & a:link {
+      color: var(--color-white);
+    }
+  }
+
+  .footer__socials {
+    align-items: center;
+    color: var(--color-white);
+    display: flex;
+    font-size: 24px;
+    gap: 16px;
+    justify-content: center;
+    line-height: 1.33;
+    text-align: center;
+    width: 100%;
+  }
+</style>

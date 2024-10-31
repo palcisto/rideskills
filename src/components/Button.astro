@@ -1,0 +1,78 @@
+---
+interface BaseButtonProps {
+  variant: 'primary' | 'secondary';
+  class?: string;
+  id?: string;
+}
+
+interface _ButtonProps extends BaseButtonProps {
+  type?: 'button' | 'submit';
+}
+
+interface _LinkButtonProps extends BaseButtonProps {
+  type: 'link';
+  href: string;
+}
+
+export type Props = _ButtonProps | _LinkButtonProps;
+
+Astro.props.type = Astro.props.type || 'button';
+
+const { class: classes, type, id, variant } = Astro.props;
+
+const Component = type === 'link' ? 'a' : 'button';
+
+let props;
+
+if (type === 'link') {
+  props = {
+    id,
+    href: Astro.props.href,
+  } as { id: string; href: string };
+} else {
+  props = {
+    id,
+    type,
+  } as { id: string; type: 'button' | 'submit' };
+}
+
+const variants = {
+  primary: 'button--primary',
+  secondary: 'button--secondary',
+};
+---
+
+<Component class:list={[classes, 'button', variants[variant]]} {...props}>
+  <slot />
+</Component>
+
+<style>
+  .button {
+    @apply inline-block font-display leading-none text-center max-md:w-full transition-all duration-300;
+    font-size: clamp(1.125rem, 1.04rem + 0.426vw, 1.5rem);
+    padding-bottom: clamp(0.5rem, 0.386rem + 0.568vw, 1rem);
+    padding-top: clamp(0.5rem, 0.386rem + 0.568vw, 1rem);
+    padding-left: clamp(0.75rem, 0.494rem + 1.278vw, 1.875rem);
+    padding-right: clamp(0.75rem, 0.494rem + 1.278vw, 1.875rem);
+  }
+
+  .button--primary {
+    @apply text-primary;
+    background-color: color-mix(
+      in srgb,
+      var(--color-secondary),
+      var(--color-black) 10%
+    );
+  }
+
+  .button--primary:hover,
+  .button--primary:active,
+  .button--primary:focus {
+    background-color: var(--color-secondary);
+    box-shadow: 0px 2px 10px rgb(var(--color-secondary-rgb) / 50%);
+  }
+
+  .button--secondary {
+    @apply bg-primary text-white;
+  }
+</style>

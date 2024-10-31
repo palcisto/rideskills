@@ -1,17 +1,12 @@
 import { type SVGProps } from 'react';
 const RSLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    id="Layer_2"
-    viewBox="0 0 321.35 60.93"
-    {...props}
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321.35 60.93" {...props}>
     <defs>
       <style>
-        {'.cls-1,.cls-2{fill:#f6b643;stroke-width:0}.cls-2{fill:#fff}'}
+        {'.cls-1,.cls-2{fill:#f6b643;stroke-width:0;}.cls-2{fill:#fff}'}
       </style>
     </defs>
-    <g id="Layer_1-2">
+    <g>
       <path
         d="M227.89 60.93h-11.71l-16.36-15.8c-.92-.83-1.34-1.87-1.28-3.12.04-.58.19-1.13.45-1.64s.62-.94 1.08-1.3l14.83-11.96h12.99l-19.11 15.4 19.11 18.42Z"
         className="cls-1"

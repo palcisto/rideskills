@@ -1,0 +1,9 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: classes } = Astro.props as Props;
+---
+
+<svg class:list={[classes]} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 29 26"><g clip-path="url(#a)"><path fill="#F6B643" d="m0 26-4.5e-7-10.3594L13.5494 1.15104c.7211-.812496 1.6171-1.1961762 2.688-1.1284691.5026.0451392.9615.1805571 1.3986.4062521.4371.225692.8086.541666 1.1146.947917L29 14.5122V26L15.8003 9.07292 0 26Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h26v29H0z" transform="rotate(-90 13 13)"/></clipPath></defs></svg>

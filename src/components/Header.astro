@@ -1,0 +1,225 @@
+---
+import { isProdReady } from '../constants';
+import RSLogo from '../components/svg/rs-logo';
+
+interface Props {
+  variant?: 'global' | 'homepage';
+}
+
+const { variant = 'global' } = Astro.props;
+---
+
+<header
+  class:list={[
+    'header',
+    variant === 'homepage' ? 'header--homepage' : 'header--global',  'w-full', 'p-6', 'md:p-8', 'lg:px-10', 'xl:px-16', 'xl:py-8'
+  ]}
+>
+  <div class:list={[
+    'header__inner',
+    'grid',
+    // 'md:flex',
+    variant === 'homepage' ? 'md:flex' : 'sm:flex',
+    variant === 'homepage' ? 'md:items-center' : 'items-center',
+    variant === 'homepage' ? 'md:justify-between' : 'justify-between'
+  ]}>
+    <a class="home-link" href="/"><RSLogo className="logo w-[39vw] md:w-[200px] lg:w-[250px] h-auto" /></a>
+
+    {isProdReady && <nav
+      class="nav hidden top-0 left-0 w-full h-full z-20 bg-primary flex-col justify-center items-center lg:flex lg:bg-transparent lg:flex-row lg:justify-start lg:h-auto lg:w-auto"
+    >
+      <ul
+        class="nav__list hidden flex-col items-center gap-3 lg:flex lg:gap-8 lg:flex-row"
+      >
+        <li class="nav__list__item"><a href="">Lessons</a></li>
+        <li class="nav__list__item"><a href="">Testimonials</a></li>
+      </ul>
+      <ul class="flex gap-3 mt-6 lg:hidden">
+        <li><a href="https://www.instagram.com/rideskills.bike">IG</a></li>
+        <li><a href="https://www.facebook.com/rideskills.bike.clt">FB</a></li>
+      </ul>
+      <button class="js-close-menu">
+        <span class="sr-only">Close Menu</span>
+      </button>
+    </nav>
+    <button class="menu-toggle js-open-menu">
+      <span class="sr-only">Menu</span>
+    </button>}
+  </div>
+</header>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .header {
+  }
+
+  .header--homepage {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(var(--color-primary-rgb) / 75%),
+      rgb(var(--color-primary-rgb) / 3%) 93%,
+      rgb(var(--color-primary-rgb) / 0)
+    );
+
+    @apply absolute left-0 top-0 z-10;
+    min-height: 113px;
+  }
+
+  .header--global {
+    background-color: var(--color-primary);
+  }
+
+  .header__inner {
+    grid-template-columns: 45px 1fr 45px;
+    grid-template-rows: fit-content(100%) auto;
+  }
+
+  .header--global .header__inner {
+    grid-template-rows: repeat(1, minmax(0px, 1fr));
+  }
+
+  .home-link {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    place-self: center;
+  }
+  .logo {
+    filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
+  }
+
+  .nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &__item {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+
+      a,
+      a:link {
+        color: var(--color-white);
+        text-decoration: none;
+
+        @media (min-width: 768px) {
+          text-shadow: 0 4px 8px rgb(0 0 0 / 45%);
+        }
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+  }
+
+  .menu-toggle {
+    align-self: center;
+    grid-column: 3 / 4;
+    grid-row: 1 / 1;
+    justify-self: end;
+    border: 0;
+    padding: 0;
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      background-color: var(--color-white);
+      border-radius: 2px;
+      display: block;
+      width: 18px;
+      height: 2px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      top: -5px;
+    }
+
+    &::after {
+      top: 5px;
+    }
+
+    @include for-size(tablet-landscape-up) {
+      display: none;
+    }
+  }
+
+  .logo {
+    filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    place-self: center;
+  }
+
+  .nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &__item {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+
+      a,
+      a:link {
+        color: var(--color-white);
+        text-decoration: none;
+
+        @media (min-width: 768px) {
+          text-shadow: 0 4px 8px rgb(0 0 0 / 45%);
+        }
+      }
+
+      a:hover {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+  }
+
+  .menu-toggle {
+    align-self: center;
+    grid-column: 3 / 4;
+    grid-row: 1 / 1;
+    justify-self: end;
+    border: 0;
+    padding: 0;
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      background-color: var(--color-white);
+      border-radius: 2px;
+      display: block;
+      width: 18px;
+      height: 2px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      top: -5px;
+    }
+
+    &::after {
+      top: 5px;
+    }
+
+    @include for-size(tablet-landscape-up) {
+      display: none;
+    }
+  }
+</style>
