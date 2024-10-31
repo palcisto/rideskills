@@ -1,31 +1,63 @@
 ---
 import RSLogo from '../components/svg/rs-logo';
 import Instagram from '../components/icons/Instagram.astro';
-const year = (new Date()).getFullYear();
+const year = new Date().getFullYear();
+
+const isProdReady = false;
 ---
+
 <footer class="footer flex flex-col items-center gap-14 py-40 lg:py-32">
   <RSLogo className="logo" />
-  <div class="flex self-center max-w-[630px] w-full justify-between">
-    <ul class="footer__nav w-1/2">
-      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#book">Book Lesson</a></li>
-      <li class="footer__nav__item"><a class="footer__nav__item__link" href="#testimonials">Testimonials</a></li>
-    </ul>
-    <p class="footer__contact">
+  <div
+    class:list={[
+      'flex',
+      'self-center',
+      'max-w-[630px]',
+      'w-full',
+      isProdReady ? 'justify-between' : 'justify-center',
+    ]}
+  >
+    {
+      isProdReady && (
+        <ul class="footer__nav w-1/2">
+          <li class="footer__nav__item">
+            <a class="footer__nav__item__link" href="#book">
+              Book Lesson
+            </a>
+          </li>
+          <li class="footer__nav__item">
+            <a class="footer__nav__item__link" href="#testimonials">
+              Testimonials
+            </a>
+          </li>
+        </ul>
+      )
+    }
+    <p class:list={['footer__contact', !isProdReady && 'text-center']}>
       <span>Ride Skills, LLC</span><br />
       <span>Charlotte, NC</span><br />
-      <a class="[&:link]:underline md:[&:link]:no-underline" href="tel:1-704-559-9202">(704) 559-9202</a><br />
+      <a
+        class="[&:link]:underline md:[&:link]:no-underline"
+        href="tel:1-704-559-9202">(704) 559-9202</a
+      ><br />
       <span>contact@rideskills.bike</span>
     </p>
   </div>
   <p class="footer__socials">
     Find us on Instagram!
-    <a class="inline-block w-8 h-8" target="_blank" href="https://www.instagram.com/rideskills.bike">
+    <a
+      class="inline-block w-8 h-8"
+      target="_blank"
+      href="https://www.instagram.com/rideskills.bike"
+    >
       <Instagram />
       <span class="sr-only">Instagram</span>
     </a>
   </p>
 
-  <p class="text-white text-sm text-center">&copy; {year} All Rights Reserved, Ride Skills LLC.</p>
+  <p class="text-white text-sm text-center">
+    &copy; {year} All Rights Reserved, Ride Skills LLC.
+  </p>
 </footer>
 
 <style>
@@ -34,7 +66,7 @@ const year = (new Date()).getFullYear();
     padding-left: var(--page-margin);
     padding-right: var(--page-margin);
   }
-  
+
   .logo {
     filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
     grid-area: logo;
@@ -61,7 +93,7 @@ const year = (new Date()).getFullYear();
   .footer__nav__item {
     line-height: 2;
   }
-      
+
   .footer__nav__item__link:link {
     color: var(--color-white);
     text-decoration: underline;
