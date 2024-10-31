@@ -7,7 +7,6 @@ interface Props {
 }
 
 const { variant = 'global' } = Astro.props;
-
 ---
 
 <header
@@ -16,8 +15,15 @@ const { variant = 'global' } = Astro.props;
     variant === 'homepage' ? 'header--homepage' : 'header--global',  'w-full', 'p-6', 'md:p-8', 'lg:px-10', 'xl:px-16', 'xl:py-8'
   ]}
 >
-  <div class="header__inner grid md:flex md:items-center md:justify-between">
-    <RSLogo className="logo w-[39vw] md:w-[200px] lg:w-[250px] h-auto" />
+  <div class:list={[
+    'header__inner',
+    'grid',
+    // 'md:flex',
+    variant === 'homepage' ? 'md:flex' : 'sm:flex',
+    variant === 'homepage' ? 'md:items-center' : 'items-center',
+    variant === 'homepage' ? 'md:justify-between' : 'justify-between'
+  ]}>
+    <a class="home-link" href="/"><RSLogo className="logo w-[39vw] md:w-[200px] lg:w-[250px] h-auto" /></a>
 
     {isProdReady && <nav
       class="nav hidden top-0 left-0 w-full h-full z-20 bg-primary flex-col justify-center items-center lg:flex lg:bg-transparent lg:flex-row lg:justify-start lg:h-auto lg:w-auto"
@@ -46,10 +52,6 @@ const { variant = 'global' } = Astro.props;
   @use '../styles/mixins' as *;
 
   .header {
-    min-height: 113px;
-  }
-
-  .header--homepage {
   }
 
   .header--homepage {
@@ -61,6 +63,7 @@ const { variant = 'global' } = Astro.props;
     );
 
     @apply absolute left-0 top-0 z-10;
+    min-height: 113px;
   }
 
   .header--global {
@@ -72,11 +75,17 @@ const { variant = 'global' } = Astro.props;
     grid-template-rows: fit-content(100%) auto;
   }
 
-  .logo {
-    filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
+  .header--global .header__inner {
+    grid-template-rows: repeat(1, minmax(0px, 1fr));
+  }
+
+  .home-link {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     place-self: center;
+  }
+  .logo {
+    filter: drop-shadow(0px 4px 8px rgb(0 0 0 / 35%));
   }
 
   .nav__list {
